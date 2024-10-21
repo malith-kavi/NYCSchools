@@ -14,13 +14,15 @@ class SchoolsViewModel {
     
     private let apiService: SchoolAPILogic = SchoolAPI()
     
-    func getSchools() {
+    func getSchools(completion: @escaping(([School]?, DataError?) -> ())) {
         apiService.getSchools { [weak self] result in
             switch result {
             case .success(let schools):
                 self?.schools = schools ?? []
+                completion(schools, nil)
             case .failure(let error):
                 self?.error = error
+                completion([], error)
             }
         }
     }
