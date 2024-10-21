@@ -14,19 +14,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        schoolViewModel.getSchools()
-        
-//        let api: SchoolAPILogic = SchoolAPI()
-//        api.getSchools { result in
-//            switch result {
-//            case .failure(let error):
-//                print("error retrieving schools: \(error.localizedDescription)")
-//            case .success(let schools):
-//                if let schools = schools {
-//                    print("found sschools \(schools.count)")
-//                }
-//            }
-//        }
+        schoolViewModel.getSchools { [weak self] (schools, error) in
+            if let error = error {
+                let alert = UIAlertController(title: "Error", message: "Could not be retrive schools: \(error.localizedDescription)", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default)
+                alert.addAction(action)
+                self?.present(alert, animated: true)
+            }
+            
+            if let schools = schools {
+                print("retrived \(schools.count) schools")
+            }
+        }
+
    }
 
 
