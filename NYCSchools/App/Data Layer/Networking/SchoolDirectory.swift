@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol SchoolAPILogic{
     func getSchools()
@@ -19,8 +20,8 @@ class SchoolAPI: SchoolAPILogic{
     func getSchools() {
         AF.request(Constants.schoolListURL)
             .validate()
-            .responseDecodable(of: [School].self) { result in
-                switch result {
+            .responseDecodable(of: [School].self) { response in
+                switch response.result {
                 case .failure(let error):
                     break
                 case .success(let school):
