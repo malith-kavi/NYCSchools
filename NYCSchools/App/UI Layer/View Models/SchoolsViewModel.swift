@@ -6,28 +6,28 @@
 //
 
 import Foundation
+import Combine
 
 
 class SchoolsViewModel {
-    private(set) var schools: [School] = []
-    private(set) var error: DataError? = nil
+    @Published private(set) var schools: [School] = []
+    @Published private(set) var error: DataError? = nil
     
-    private let apiService: SchoolAPILogic = SchoolAPI()
+    private let apiService: SchoolAPILogic
     
-    init(schools: [School], error: DataError? = nil) {
-        self.schools = schools
-        self.error = error
+    init(apiService: SchoolAPILogic = SchoolAPI()){
+        self.apiService = apiService
     }
     
-    func getSchools(completion: @escaping(([School]?, DataError?) -> ())) {
+    func getSchools() {
         apiService.getSchools { [weak self] result in
             switch result {
             case .success(let schools):
                 self?.schools = schools ?? []
-                completion(schools, nil)
+                
             case .failure(let error):
                 self?.error = error
-                completion([], error)
+                
             }
         }
     }
