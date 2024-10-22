@@ -14,6 +14,11 @@ class SchoolsViewModel {
     
     private let apiService: SchoolAPILogic = SchoolAPI()
     
+    init(schools: [School], error: DataError? = nil) {
+        self.schools = schools
+        self.error = error
+    }
+    
     func getSchools(completion: @escaping(([School]?, DataError?) -> ())) {
         apiService.getSchools { [weak self] result in
             switch result {
