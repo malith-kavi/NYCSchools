@@ -16,7 +16,7 @@ class SchoolsViewModel {
     
     private let apiService: SchoolAPILogic
     
-    init(apiService: SchoolAPILogic = SchoolAPI()){
+    init(apiService: SchoolAPILogic = SchoolAPI()) {
         self.apiService = apiService
     }
     
@@ -25,10 +25,11 @@ class SchoolsViewModel {
             switch result {
             case .success(let schools):
                 self?.schools = schools ?? []
-                
+                if schools?.isEmpty == false {
+                    self?.prepareSchoolSections()
+                }
             case .failure(let error):
                 self?.error = error
-                
             }
         }
     }
@@ -38,7 +39,7 @@ class SchoolsViewModel {
         var schoolDictionary = [String: SchoolSection]()
         
         for school in schools {
-            if let city = school.city{
+            if let city = school.city {
                 if schoolDictionary[city] != nil {
                     schoolDictionary[city]?.schools.append(school)
                 } else {
@@ -49,6 +50,7 @@ class SchoolsViewModel {
                 }
             }
         }
+        
         listOfSections = Array(schoolDictionary.values)
         listOfSections.sort {
             return $0.city < $1.city
