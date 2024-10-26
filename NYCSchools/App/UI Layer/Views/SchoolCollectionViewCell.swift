@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import PureLayout
 
 class SchoolCollectionViewCell: UICollectionViewCell {
     private var school: School?
@@ -66,33 +67,45 @@ class SchoolCollectionViewCell: UICollectionViewCell {
         setupEmailLabel()
     }
     
-    private func setupWrapperView(){
+    private func setupWrapperView() {
         addSubview(wrapperView)
         wrapperView.autoPinEdgesToSuperviewEdges(with: Constants.wrapperViewInsets)
     }
     
     private func setupNameLabel() {
         wrapperView.addSubview(nameLabel)
-        nameLabel.autoPinEdge(toSuperviewEdge: .leading, withInset: Constants.leftInset)
-        nameLabel.autoPinEdge(toSuperviewEdge: .trailing, withInset: Constants.rightInset)
-        nameLabel.autoPinEdge(toSuperviewEdge: .top, withInset: Constants.topInset)
+        nameLabel.autoPinEdge(toSuperviewEdge: .leading,
+                              withInset: Constants.leftInset)
+        nameLabel.autoPinEdge(toSuperviewEdge: .trailing,
+                              withInset: Constants.rightInset)
+        nameLabel.autoPinEdge(toSuperviewEdge: .top,
+                              withInset: Constants.topInset)
     }
     
     private func setupCityLabel() {
         wrapperView.addSubview(cityLabel)
-        cityLabel.autoPinEdge(toSuperviewEdge: .leading, withInset: Constants.leftInset)
-        cityLabel.autoPinEdge(toSuperviewEdge: .trailing, withInset: Constants.rightInset)
-        cityLabel.autoPinEdge(.top, to: .bottom, of: nameLabel,
+        cityLabel.autoPinEdge(toSuperviewEdge: .leading,
+                              withInset: Constants.leftInset)
+        cityLabel.autoPinEdge(toSuperviewEdge: .trailing,
+                              withInset: Constants.rightInset)
+        cityLabel.autoPinEdge(.top,
+                              to: .bottom,
+                              of: nameLabel,
                               withOffset: Constants.topInset)
     }
     
     private func setupEmailLabel() {
         wrapperView.addSubview(emailLabel)
-        emailLabel.autoPinEdge(toSuperviewEdge: .leading, withInset: Constants.leftInset)
-        emailLabel.autoPinEdge(toSuperviewEdge: .trailing, withInset: Constants.rightInset)
-        emailLabel.autoPinEdge(.top, to: .bottom, of: cityLabel,
+        emailLabel.autoPinEdge(toSuperviewEdge: .leading,
+                               withInset: Constants.leftInset)
+        emailLabel.autoPinEdge(toSuperviewEdge: .trailing,
+                               withInset: Constants.rightInset)
+        emailLabel.autoPinEdge(.top,
+                               to: .bottom,
+                               of: cityLabel,
                                withOffset: Constants.topInset)
-        emailLabel.autoPinEdge(toSuperviewEdge: .bottom, withInset: Constants.bottomInset)
+        emailLabel.autoPinEdge(toSuperviewEdge: .bottom,
+                               withInset: Constants.bottomInset)
     }
     
     func populate(_ school: School) {
