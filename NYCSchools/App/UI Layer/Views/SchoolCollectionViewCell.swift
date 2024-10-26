@@ -94,4 +94,11 @@ class SchoolCollectionViewCell: UICollectionViewCell {
                                withOffset: Constants.topInset)
         emailLabel.autoPinEdge(toSuperviewEdge: .bottom, withInset: Constants.bottomInset)
     }
+    
+    func populate(_ school: School) {
+        self.school = school
+        nameLabel.text = school.schoolName
+        cityLabel.text = school.city
+        emailLabel.text = school.schoolEmail
+    }
 }
