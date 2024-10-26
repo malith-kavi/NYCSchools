@@ -14,9 +14,17 @@ class SchoolListCollectionViewController: UIViewController {
     private let schoolsViewModel: SchoolsViewModel = SchoolsViewModel()
     private var cancellables = Set<AnyCancellable>()
     private var collectionView: UICollectionView?
+    
+    private struct Constants {
+        static let cellIdentifier: String = "schoolCell"
+        static let cellHeight: CGFloat = 100
+        static let sectionHeaderIdentifier: String = "sectionHeader"
+        static let sectionHeight:CGFloat = 50
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionView()
         setupBinders()
         schoolsViewModel.getSchools()
         
@@ -48,8 +56,12 @@ class SchoolListCollectionViewController: UIViewController {
     private func setupBinders() {
         schoolsViewModel.$schools
             .receive(on: RunLoop.main)
-            .sink { schools in
+            .sink { [weak self] schools in
+                    if !schools.isEmpty {
                     print("retrived \(schools.count) schools")
+                    self?.collectionView?.reloadData()
+                }
+                    
             }
             .store(in: &cancellables)
         
@@ -67,6 +79,28 @@ class SchoolListCollectionViewController: UIViewController {
     }
 }
 
+extension SchoolListCollectionViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return schoolsViewModel.schools.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellIdentifier,
+                                                            for: indexPath) as? SchoolCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        if let schoolSection = schoolsViewModel.schoolSectionsList[indexPath.section]
+        let school = schoolsViewModel.schools[indexPath.item]
+        cell.populate(school)
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+}
 
-
+extension SchoolListCollectionViewController: UICollectionViewDelegate {
+    
+}
 
