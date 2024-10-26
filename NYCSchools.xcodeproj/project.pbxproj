@@ -18,6 +18,8 @@
 		2C7C4CAE289890F600860F05 /* NYCSchoolsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7C4CAD289890F600860F05 /* NYCSchoolsUITestsLaunchTests.swift */; };
 		3856A8542CC6D38D00252CA6 /* SchoolsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856A8532CC6D38D00252CA6 /* SchoolsViewModel.swift */; };
 		3856A8562CC6E5E900252CA6 /* MockSchoolAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3856A8552CC6E5E900252CA6 /* MockSchoolAPI.swift */; };
+		3883C85E2CCD657300A6B46D /* SchoolSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3883C85D2CCD657300A6B46D /* SchoolSection.swift */; };
+		3883C8602CCD66C400A6B46D /* SchoolSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3883C85F2CCD66C400A6B46D /* SchoolSectionHeaderView.swift */; };
 		38D8039A2CC5003500DF9811 /* SchoolDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D803992CC5003500DF9811 /* SchoolDirectory.swift */; };
 		38D8039C2CC5062C00DF9811 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D8039B2CC5062C00DF9811 /* DataError.swift */; };
 		38DC814B2CCBCF0D003777A6 /* SchoolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC814A2CCBCF0D003777A6 /* SchoolCollectionViewCell.swift */; };
@@ -67,6 +69,8 @@
 		35C3A8DDBEED8B2D99697771 /* Pods-NYCSchools-NYCSchoolsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYCSchools-NYCSchoolsUITests.debug.xcconfig"; path = "Target Support Files/Pods-NYCSchools-NYCSchoolsUITests/Pods-NYCSchools-NYCSchoolsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3856A8532CC6D38D00252CA6 /* SchoolsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolsViewModel.swift; sourceTree = "<group>"; };
 		3856A8552CC6E5E900252CA6 /* MockSchoolAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSchoolAPI.swift; sourceTree = "<group>"; };
+		3883C85D2CCD657300A6B46D /* SchoolSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSection.swift; sourceTree = "<group>"; };
+		3883C85F2CCD66C400A6B46D /* SchoolSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSectionHeaderView.swift; sourceTree = "<group>"; };
 		388B3C7254644E0397AD448D /* Pods-NYCSchools.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYCSchools.release.xcconfig"; path = "Target Support Files/Pods-NYCSchools/Pods-NYCSchools.release.xcconfig"; sourceTree = "<group>"; };
 		38D803992CC5003500DF9811 /* SchoolDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDirectory.swift; sourceTree = "<group>"; };
 		38D8039B2CC5062C00DF9811 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 		2C7C4CBD289DC0A900860F05 /* UI Layer */ = {
 			isa = PBXGroup;
 			children = (
+				3883C85C2CCD654D00A6B46D /* Models */,
 				3856A8522CC6D33E00252CA6 /* View Models */,
 				2C7C4CC0289DC0DD00860F05 /* Storyboards */,
 				2C7C4CBF289DC0C400860F05 /* Views */,
@@ -214,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				38DC814A2CCBCF0D003777A6 /* SchoolCollectionViewCell.swift */,
+				3883C85F2CCD66C400A6B46D /* SchoolSectionHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,6 +238,14 @@
 				3856A8532CC6D38D00252CA6 /* SchoolsViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		3883C85C2CCD654D00A6B46D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3883C85D2CCD657300A6B46D /* SchoolSection.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		38F04A242CC830030050AA22 /* Utilities */ = {
@@ -523,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F04A2E2CC835210050AA22 /* School.swift in Sources */,
+				3883C8602CCD66C400A6B46D /* SchoolSectionHeaderView.swift in Sources */,
 				38F04A2F2CC835210050AA22 /* SchoolListLoadState.swift in Sources */,
 				38D8039C2CC5062C00DF9811 /* DataError.swift in Sources */,
 				2C7C4C8F289890F400860F05 /* SchoolListCollectionViewController.swift in Sources */,
@@ -532,6 +547,7 @@
 				38D8039A2CC5003500DF9811 /* SchoolDirectory.swift in Sources */,
 				2C7C4C8B289890F400860F05 /* AppDelegate.swift in Sources */,
 				2C7C4C8D289890F400860F05 /* SceneDelegate.swift in Sources */,
+				3883C85E2CCD657300A6B46D /* SchoolSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
